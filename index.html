@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+
+
+ <script>
+    // Prevenir clic derecho
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // Prevenir atajos de teclado
+    document.addEventListener('keydown', function(e) {
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+            (e.ctrlKey && e.shiftKey && e.key === 'C') ||
+            (e.ctrlKey && e.key === 'u') ||
+            (e.ctrlKey && e.key === 'U')
+        ) {
+            e.preventDefault();
+            alert('Acceso al código fuente no permitido');
+        }
+    });
+
+    // Detección de devtools
+    setInterval(function() {
+        debugger;
+    }, 1000);
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeantex | Fábrica de Telas de Jean Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --denim: #1560bd;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #34495e;
+            --text-light: #7f8c8d;
+            --success: #27ae60;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: var(--denim);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .main-header {
+            padding: 15px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--denim);
+        }
+
+        /* Navegación Principal */
+        .main-nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            padding: 10px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--denim);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--denim);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--denim);
+        }
+
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        /* Dropdown Menus */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 250px;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: var(--text);
+            border-bottom: 1px solid var(--light);
+            transition: var(--transition);
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--light);
+            color: var(--denim);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1582418702059-8eb8c05b5c0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--denim);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--denim);
+        }
+
+        /* Sección de Catálogo */
+        .catalog {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filtros */
+        .filters {
+            background-color: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background-color: var(--light);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active {
+            background-color: var(--denim);
+            color: white;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--denim);
+            color: white;
+        }
+
+        /* Grid de Productos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 250px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .product-specs {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .product-specs li {
+            padding: 5px 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .product-specs i {
+            color: var(--denim);
+            font-size: 0.8rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Sección de Proceso */
+        .process {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .process-step {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--denim);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+
+        /* Sección Técnica */
+        .technical {
+            padding: 80px 0;
+        }
+
+        .tech-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .tech-tab {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .tech-tab.active {
+            color: var(--denim);
+            border-bottom: 3px solid var(--denim);
+        }
+
+        .tech-content {
+            display: none;
+        }
+
+        .tech-content.active {
+            display: block;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .tech-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tech-card h3 i {
+            color: var(--denim);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--denim);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .filter-options {
+                justify-content: center;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-tabs {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-content">
+                <div class="contact-info">
+                    <a href="tel:___________________"><i class="fas fa-phone"></i> ______________</a>
+                    <a href="mailto:info@Jeantex.com"><i class="fas fa-envelope"></i> info@Jeantex.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-header">
+            <div class="container header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-tshirt logo-icon"></i>
+                    <span>Jeantex</span>
+                </a>
+                
+                <nav class="main-nav">
+                    <a href="#" class="nav-link active">Inicio</a>
+                    
+                    <div class="dropdown">
+                        <a href="#" class="nav-link">Catálogo <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#">Por Tipo de Tejido</a>
+                            <a href="#">Por Composición</a>
+                            <a href="#">Por Color</a>
+                            <a href="#">Novedades</a>
+                            <a href="#">Catálogo Completo</a>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <a href="#" class="nav-link">Proceso <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#">Tecnología y Maquinaria</a>
+                            <a href="#">Control de Calidad</a>
+                            <a href="#">Sostenibilidad</a>
+                            <a href="#">Innovación</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="nav-link">Clientes</a>
+                    
+                    <div class="dropdown">
+                        <a href="#" class="nav-link">Recursos <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#">Fichas Técnicas</a>
+                            <a href="#">Guías de Aplicación</a>
+                            <a href="#">Catálogos Descargables</a>
+                            <a href="#">Soporte Técnico</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="nav-link">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Telas de Jean de Calidad Industrial</h1>
+            <p>Fabricantes especializados en tejidos denim para confección, moda y uniformidad. Calidad certificada y procesos sostenibles.</p>
+            <div class="hero-buttons">
+                <a href="#catalog" class="btn">Ver Catálogo</a>
+                <a href="#contact" class="btn btn-outline">Solicitar Muestras</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Productos -->
+    <section class="catalog" id="catalog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Catálogo de Telas</h2>
+                <p>Explore nuestra amplia gama de tejidos denim con diferentes composiciones, colores y aplicaciones</p>
+            </div>
+            
+            <!-- Filtros -->
+            <div class="filters">
+                <div class="filter-group">
+                    <h3>Tipo de Tejido</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="all">Todos</button>
+                        <button class="filter-btn" data-filter="sarga">Sarga Denim</button>
+                        <button class="filter-btn" data-filter="tafetan">Tafetán</button>
+                        <button class="filter-btn" data-filter="satin">Satín</button>
+                        <button class="filter-btn" data-filter="combinado">Combinado</button>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Composición</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="all">Todas</button>
+                        <button class="filter-btn" data-filter="algodon">100% Algodón</button>
+                        <button class="filter-btn" data-filter="mezcla">Algodón/Poliéster</button>
+                        <button class="filter-btn" data-filter="stretch">Stretch (Lycra)</button>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Color</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-filter="all">Todos</button>
+                        <button class="filter-btn" data-filter="azul">Azul Denim</button>
+                        <button class="filter-btn" data-filter="negro">Negro</button>
+                        <button class="filter-btn" data-filter="drill">Drill (Crudo)</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid de Productos -->
+            <div class="products-grid">
+                <!-- Producto 1 -->
+                <div class="product-card" data-category="sarga algodon azul">
+                    <div class="product-image">
+                        Sarga Denim Azul - 100% Algodón
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Denim Clásico Azul</h3>
+                        <ul class="product-specs">
+                            <li><i class="fas fa-weight"></i> 12 oz/yd²</li>
+                            <li><i class="fas fa-ruler"></i> Ancho: 58"</li>
+                            <li><i class="fas fa-th"></i> Tejido: Sarga 3x1</li>
+                            <li><i class="fas fa-palette"></i> Color: Azul Indigo</li>
+                        </ul>
+                        <div class="product-actions">
+                            <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Solicitar Muestra</button>
+                            <button class="btn" style="padding: 8px 15px; font-size: 0.9rem; background-color: var(--success);">Ficha Técnica</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 2 -->
+                <div class="product-card" data-category="sarga stretch negro">
+                    <div class="product-image">
+                        Sarga Stretch Negro - Algodón/Lycra
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Denim Stretch Negro</h3>
+                        <ul class="product-specs">
+                            <li><i class="fas fa-weight"></i> 10 oz/yd²</li>
+                            <li><i class="fas fa-ruler"></i> Ancho: 60"</li>
+                            <li><i class="fas fa-th"></i> Tejido: Sarga 2x1</li>
+                            <li><i class="fas fa-expand-arrows-alt"></i> Elasticidad: 30%</li>
+                        </ul>
+                        <div class="product-actions">
+                            <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Solicitar Muestra</button>
+                            <button class="btn" style="padding: 8px 15px; font-size: 0.9rem; background-color: var(--success);">Ficha Técnica</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 3 -->
+                <div class="product-card" data-category="tafetan mezcla drill">
+                    <div class="product-image">
+                        Tafetán Drill - Algodón/Poliéster
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Tafetán Drill Industrial</h3>
+                        <ul class="product-specs">
+                            <li><i class="fas fa-weight"></i> 14 oz/yd²</li>
+                            <li><i class="fas fa-ruler"></i> Ancho: 56"</li>
+                            <li><i class="fas fa-th"></i> Tejido: Tafetán 1x1</li>
+                            <li><i class="fas fa-shield-alt"></i> Alta Resistencia</li>
+                        </ul>
+                        <div class="product-actions">
+                            <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Solicitar Muestra</button>
+                            <button class="btn" style="padding: 8px 15px; font-size: 0.9rem; background-color: var(--success);">Ficha Técnica</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 4 -->
+                <div class="product-card" data-category="satin algodon azul">
+                    <div class="product-image">
+                        Satín Denim Azul - 100% Algodón
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Satín Denim Premium</h3>
+                        <ul class="product-specs">
+                            <li><i class="fas fa-weight"></i> 8 oz/yd²</li>
+                            <li><i class="fas fa-ruler"></i> Ancho: 54"</li>
+                            <li><i class="fas fa-th"></i> Tejido: Satín 4x1</li>
+                            <li><i class="fas fa-star"></i> Acabado Premium</li>
+                        </ul>
+                        <div class="product-actions">
+                            <button class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Solicitar Muestra</button>
+                            <button class="btn" style="padding: 8px 15px; font-size: 0.9rem; background-color: var(--success);">Ficha Técnica</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso de Fabricación -->
+    <section class="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Proceso de Fabricación</h2>
+                <p>Tecnología avanzada y control de calidad en cada etapa del proceso productivo</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Selección de Materias Primas</h3>
+                    <p>Algodón de fibra larga certificado y materiales de primera calidad para garantizar durabilidad y comfort.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                    <h3>Hilatura y Tejeduría</h3>
+                    <p>Procesos de hilatura ring-spun y tejeduría con maquinaria de última generación para tejidos consistentes.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Tintorería y Acabados</h3>
+                    <p>Tecnología de tintorería eco-friendly y acabados especializados para diferentes aplicaciones y mercados.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Control de Calidad</h3>
+                    <p>Rigurosos controles en cada etapa para garantizar estándares internacionales de calidad y durabilidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Técnica -->
+    <section class="technical">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recursos Técnicos</h2>
+                <p>Documentación especializada para fabricantes, diseñadores y confeccionistas</p>
+            </div>
+            
+            <div class="tech-tabs">
+                <button class="tech-tab active" data-tab="fichas">Fichas Técnicas</button>
+                <button class="tech-tab" data-tab="guias">Guías de Aplicación</button>
+                <button class="tech-tab" data-tab="sostenibilidad">Sostenibilidad</button>
+                <button class="tech-tab" data-tab="certificaciones">Certificaciones</button>
+            </div>
+            
+            <div class="tech-content active" id="fichas">
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <h3><i class="fas fa-file-pdf"></i> Especificaciones Técnicas</h3>
+                        <p>Descargue fichas técnicas completas con especificaciones de peso, composición, resistencia y comportamiento al lavado.</p>
+                        <button class="btn" style="margin-top: 15px;">Descargar Catálogo Técnico</button>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <h3><i class="fas fa-ruler-combined"></i> Tablas de Medidas</h3>
+                        <p>Consulte nuestras tablas de medidas estándar y tolerancias para planificación de producción y patronaje.</p>
+                        <button class="btn" style="margin-top: 15px;">Ver Tablas de Medidas</button>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <h3><i class="fas fa-vial"></i> Resultados de Laboratorio</h3>
+                        <p>Acceda a resultados de pruebas de laboratorio sobre resistencia, encogimiento y durabilidad de nuestros tejidos.</p>
+                        <button class="btn" style="margin-top: 15px;">Ver Resultados</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tech-content" id="guias">
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <h3><i class="fas fa-tshirt"></i> Guía para Confección</h3>
+                        <p>Recomendaciones técnicas para corte, costura y acabados en prendas de denim de diferentes pesos y composiciones.</p>
+                        <button class="btn" style="margin-top: 15px;">Descargar Guía</button>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <h3><i class="fas fa-palette"></i> Guía de Lavados</h3>
+                        <p>Instrucciones detalladas para diferentes procesos de lavado y acabados en prendas de denim.</p>
+                        <button class="btn" style="margin-top: 15px;">Descargar Guía</button>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <h3><i class="fas fa-industry"></i> Aplicaciones Industriales</h3>
+                        <p>Recomendaciones para uso de nuestros tejidos en uniformidad, ropa de trabajo y aplicaciones técnicas.</p>
+                        <button class="btn" style="margin-top: 15px;">Descargar Guía</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Jeantex</h3>
+                    <p>Fabricantes especializados en telas de jean de alta calidad para la industria de la confección.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Productos</h3>
+                    <ul>
+                        <li><a href="#">Sarga Denim</a></li>
+                        <li><a href="#">Tafetán</a></li>
+                        <li><a href="#">Satín</a></li>
+                        <li><a href="#">Tejidos Stretch</a></li>
+                        <li><a href="#">Tejidos Técnicos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Fichas Técnicas</a></li>
+                        <li><a href="#">Guías de Aplicación</a></li>
+                        <li><a href="#">Catálogos</a></li>
+                        <li><a href="#">Soporte Técnico</a></li>
+                        <li><a href="#">Blog Técnico</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><a href="tel:_________________</a></li>
+                        <li><a href="mailto:info@Jeantex.com">info@Jeantex.com</a></li>
+                        <li>Zona Industrial Guere, la Julia</li>
+                        <li>Turmero, Estado Aragua, JTX</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Jeantex - Fábrica de Telas de Jean. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad para el sitio web
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filtrado de productos
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover clase active de todos los botones del mismo grupo
+                    const filterGroup = this.parentElement;
+                    filterGroup.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Añadir clase active al botón clickeado
+                    this.classList.add('active');
+                    
+                    // Aplicar filtros
+                    applyFilters();
+                });
+            });
+            
+            function applyFilters() {
+                const activeFilters = {
+                    tipo: document.querySelector('.filter-group:nth-child(1) .filter-btn.active').dataset.filter,
+                    composicion: document.querySelector('.filter-group:nth-child(2) .filter-btn.active').dataset.filter,
+                    color: document.querySelector('.filter-group:nth-child(3) .filter-btn.active').dataset.filter
+                };
+                
+                productCards.forEach(card => {
+                    const cardCategories = card.dataset.category.split(' ');
+                    
+                    let showCard = true;
+                    
+                    // Verificar cada filtro
+                    if (activeFilters.tipo !== 'all' && !cardCategories.includes(activeFilters.tipo)) {
+                        showCard = false;
+                    }
+                    
+                    if (activeFilters.composicion !== 'all' && !cardCategories.includes(activeFilters.composicion)) {
+                        showCard = false;
+                    }
+                    
+                    if (activeFilters.color !== 'all' && !cardCategories.includes(activeFilters.color)) {
+                        showCard = false;
+                    }
+                    
+                    // Mostrar u ocultar tarjeta
+                    card.style.display = showCard ? 'block' : 'none';
+                });
+            }
+            
+            // Sistema de pestañas técnicas
+            const techTabs = document.querySelectorAll('.tech-tab');
+            const techContents = document.querySelectorAll('.tech-content');
+            
+            techTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remover clase active de todas las pestañas
+                    techTabs.forEach(t => t.classList.remove('active'));
+                    // Añadir clase active a la pestaña clickeada
+                    this.classList.add('active');
+                    
+                    // Ocultar todos los contenidos
+                    techContents.forEach(content => content.classList.remove('active'));
+                    // Mostrar el contenido correspondiente
+                    const tabId = this.dataset.tab;
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Simulación de solicitud de muestras
+            const sampleButtons = document.querySelectorAll('.product-actions .btn:first-child');
+            sampleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productName = this.closest('.product-card').querySelector('.product-name').textContent;
+                    alert(`Ha solicitado una muestra de: ${productName}\n\nNos pondremos en contacto para coordinar el envío.`);
+                });
+            });
+            
+            // Simulación de descarga de ficha técnica
+            const techButtons = document.querySelectorAll('.product-actions .btn:last-child');
+            techButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productName = this.closest('.product-card').querySelector('.product-name').textContent;
+                    alert(`Descargando ficha técnica de: ${productName}\n\nEl archivo PDF se descargará en su dispositivo.`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
